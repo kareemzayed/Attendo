@@ -37,7 +37,7 @@ This repository contains the **backend API** for **Attendo**, a geofenced attend
 ### Steps  
 1. **Clone the repo**:  
    ```bash
-   git clone https://github.com/yourusername/attendo-backend.git
+   git clone https://github.com/kareemzayed/Attendo.git
    cd attendo-backend
    ```
 
