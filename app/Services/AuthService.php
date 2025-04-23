@@ -17,16 +17,21 @@ class AuthService
      */
     public function register(array $data): array
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => Hash::make($data['password'])
-        ]);
+        try {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'password' => Hash::make($data['password'])
+            ]);
 
-        return [
-            'user' => $user,
-            'token' => $user->createToken('auth_token')->plainTextToken
-        ];
+            return [
+                'user' => $user,
+                'token' => $user->createToken('auth_token')->plainTextToken
+            ];
+        } catch (\Exception $e) {
+            \Log::error('Register failed ' . $e->getMessage());
+            throw $e;
+        }
     }
 }
